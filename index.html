@@ -76,7 +76,7 @@
   padding: 16px;
   color: rgb(255, 255, 255);
   font-weight: bold;
-  font-size: 300%;
+  font-size: 200%;
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
@@ -287,21 +287,20 @@ font-size: 160%;
 
   <strong><h2>مرحبا بيك </h2><br />
     من خلال البرنامج هذا تنجم تعرف بصفة تقريبية قداش يتكلفلك تركيب محطة شمسية منتجة للكهرباء وقداش ينجم يربحك. 
-باش تعرف أكثر جاوب على الأسئلة  </strong>
+باش تعرف أكثر جاوب على الأسئلة  <h6>"معلومات ارشادية والنتائج محسوبة على أساس معدلات "</h6> </strong> 
 </div>
 
 <div class="mySlides">
-  <strong > قداش تستهلك طاقة في العام بالدينار أو بالكيلواط</strong></br>
+  <strong > قداش تستهلك ضو في العام بالدينار أو بالكيلواط ساعة</strong></br>
   <div class="row"></br></br>
     <div class="column" >
       <input type="number" id="facture" onclick="deletekwh()"  placeholder="بالدينار">
     </div>
     <div class="column" >
-      <input type="number" id="kwh"  onclick="deletefacture()" placeholder="بالكيلواط"> 
+      <input type="number" id="kwh"  onclick="deletefacture()" placeholder="بالكيلواط ساعة"> 
     </div>
   </div>
   
-
   <img id="myImg" src="FACTURE highlight consommation1.jpg"  style="width:10%">
   <q style="color: white;">هذا نموذج الفاتورة</q>
   <!-- The Modal -->
@@ -310,6 +309,9 @@ font-size: 160%;
     <img class="modal-content" id="img01">
     
   </div>
+  <div style="right:100% ">
+  <iframe width="150" height="100"  src="https://www.youtube.com/embed/wTkoLfnBRrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 </div>
 
 <!--div class="mySlides">
@@ -408,7 +410,7 @@ font-size: 160%;
 
 
 <div class="mySlides">
-  <strong>قداش قيمة القرض؟ </strong>
+  <strong>قداش قيمة القرض؟ <h6>"قرض يخلص مع فاتورة الضو "</h6></strong>
   <div class="row">
     <div class="column" >  
       <select name="credit" id="credit">
@@ -455,8 +457,8 @@ font-size: 160%;
   </strong> 
 </div>
 
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
+<a class="prev" onclick="plusSlides(-1)">❮قبل</a>
+<a class="next" onclick="plusSlides(1)">مبعد❯</a>
 
 </div>
 
