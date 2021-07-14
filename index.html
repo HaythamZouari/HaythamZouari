@@ -732,8 +732,8 @@ function prodFunction() {
   invoice=invoiceCalc(Energie);
   pp=ppCalc(invest,subvention,invoice);
 
-  $('#invest').html(Math.round(invest*1)/1);  
-  $('#subvention').html(Math.round(subvention*1)/1);  
+  $('#invest').html(Math.round(invest/100)*100);  
+  $('#subvention').html(Math.round(subvention/100)*100);  
   $('#pp').html(Math.round(pp*1)/1);  
 
   console.log(Energie);
@@ -835,13 +835,13 @@ function credit2Function() {
 $("#credit").change(function(){
 for(let i = 0; i < 4; i++){
   if($("#credit").val()==montantCredit[i]){
-    $('#annuite').html(Math.round(annuite[i]*1)/1);  
+    $('#annuite').html(Math.round(annuite[i]/100)*100);  
     annuiteDef=annuite[i];
   }
 }
 console.log($("#credit").val());
 ppCredit=ppCreditCalc(invest,subvention,invoice,($("#credit").val()),annuiteDef);
-$('#fPropre').html(Math.round((invest-subvention-($("#credit").val()))*1)/1);
+$('#fPropre').html(Math.round((invest-subvention-($("#credit").val()))/100)*100);
 $('#creditVal').html($("#credit").val());
 $('#invest1').html(Math.round(invest*1)/1);  
   $('#subvention1').html(Math.round(subvention*1)/1);  
@@ -853,7 +853,7 @@ $("#credit2").change(function(){
   
   for(let i = 0; i < 4; i++){
     if($("#credit2").val()==montantCredit[i]){
-      $('#annuite2').html(Math.round(annuite[i]*1)/1);  
+      $('#annuite2').html(Math.round(annuite[i]/100)*100);  
       annuiteDef2=annuite[i];
     }
   }
@@ -861,8 +861,8 @@ $("#credit2").change(function(){
   ppCredit2=ppCreditCalc(newInvest,newSubvention,factureEvit,($("#credit2").val()),annuiteDef2);
   $('#fPropre2').html(Math.round((newInvest-newSubvention-($("#credit2").val()))*1)/1);
   $('#creditVal2').html($("#credit2").val());
-  $('#invest1').html(Math.round(invest*1)/1);  
-    $('#subvention1').html(Math.round(subvention*1)/1);  
+  $('#invest1').html(Math.round(invest/100)*100);  
+    $('#subvention1').html(Math.round(subvention/100)*100);  
     $('#ppcredit2').html(Math.round(ppCredit2*1)/1);  
 });
 
@@ -899,10 +899,10 @@ $("#newPower").change(function(){
   $('#pourcentage').html(Math.round((factureEvit/invoice)*100));
 
     
-  $('#newInvest').html(Math.round(newInvest*1)/1);  
+  $('#newInvest').html(Math.round(newInvest/100)*100);  
     
   
-  $('#newSubvention').html(Math.round(newSubvention*1)/1);  
+  $('#newSubvention').html(Math.round(newSubvention/100)*100);  
   
 
   $('#newpp').html(Math.round(newpp*1)/1);  
