@@ -289,7 +289,7 @@ font-size: 160%;
 <div class="mySlides">
 
   <strong><h2>مرحبا بيك </h2><br />
-    من خلال البرنامج هذا تنجم تعرف بصفة تقريبية قداش يتكلفلك تركيب محطة شمسية منتجة للكهرباء وقداش ينجم يربحك. 
+    من خلال البرنامج هذا تنجم تعرف بصفة تقريبية قداش يتكلفلك تركيب محطة شمسية منتجة للكهرباء للإستهلاك المنزلي وقداش ينجم يربحك. 
 باش تعرف أكثر جاوب على الأسئلة  <h6>"معلومات ارشادية والنتائج محسوبة على أساس معدلات "</h6> </strong> 
 </div>
 
@@ -417,8 +417,8 @@ font-size: 160%;
   <div class="row">
     <div class="column" >  
       <select name="credit" id="credit">
-        <option hidden disabled selected value> بالدينار </option>
-        <option > 3500 </option>
+        
+        
         
       </select>
     </div>
@@ -442,7 +442,7 @@ font-size: 160%;
   <div class="row">
     <div class="column" >  
       <select name="credit2" id="credit2">
-        <option hidden disabled selected value> بالدينار </option>
+       
         <option > 3500 </option>
         
       </select>
@@ -725,7 +725,7 @@ function prodFunction() {
   }
   puiPV=Energie/prodChoisi;
  
-  $('#puiPV').html(Math.round(puiPV*10)/10);
+  $('#puiPV').html(Math.round(puiPV*100)/100);
   
   invest=investCalc(puiPV);
   subvention=subvCalc(puiPV);
@@ -733,7 +733,7 @@ function prodFunction() {
   pp=ppCalc(invest,subvention,invoice);
 
   $('#invest').html(Math.round(invest/100)*100);  
-  $('#subvention').html(Math.round(subvention/100)*100);  
+  $('#subvention').html(Math.round(subvention/10)*10);  
   $('#pp').html(Math.round(pp*1)/1);  
 
   console.log(Energie);
@@ -755,6 +755,17 @@ $("#gouvernorat").change(function(){
 function creditFunction() {
   
   $("#credit").empty()
+  
+  $('#credit').append($('<option hidden disabled selected value>', 
+   'بالدينار'
+      ));
+    if ( puiPV<2){
+      $('#credit').append($('<option>', {    
+        text: montantCredit[0]
+      }));
+      
+    }
+
     if ( puiPV>=2&puiPV<3){
       $('#credit').append($('<option>', {    
         text: montantCredit[0]
@@ -793,6 +804,17 @@ function creditFunction() {
 function credit2Function() {
   
   $("#credit2").empty()
+  $('#credit2').append($('<option hidden disabled selected value>', 
+   'بالدينار'
+      ));
+    if ( newPuiPV<2){
+        $('#credit2').append($('<option>', {    
+          text: montantCredit[0]
+        }));
+        
+      }
+
+
     if ( newPuiPV>=2&newPuiPV<3){
       $('#credit2').append($('<option>', {    
         text: montantCredit[0]
@@ -862,7 +884,7 @@ $("#credit2").change(function(){
   $('#fPropre2').html(Math.round((newInvest-newSubvention-($("#credit2").val()))*1)/1);
   $('#creditVal2').html($("#credit2").val());
   $('#invest1').html(Math.round(invest/100)*100);  
-    $('#subvention1').html(Math.round(subvention/100)*100);  
+    $('#subvention1').html(Math.round(subvention/10)*10);  
     $('#ppcredit2').html(Math.round(ppCredit2*1)/1);  
 });
 
@@ -894,7 +916,7 @@ $("#newPower").change(function(){
   
   console.log(invoiceCalc(7000));
 
-  $('#newPuiPV').html(Math.round(newPuiPV*10)/10);
+  $('#newPuiPV').html(Math.round(newPuiPV*100)/100);
   
   $('#pourcentage').html(Math.round((factureEvit/invoice)*100));
 
@@ -902,7 +924,7 @@ $("#newPower").change(function(){
   $('#newInvest').html(Math.round(newInvest/100)*100);  
     
   
-  $('#newSubvention').html(Math.round(newSubvention/100)*100);  
+  $('#newSubvention').html(Math.round(newSubvention/10)*10);  
   
 
   $('#newpp').html(Math.round(newpp*1)/1);  
