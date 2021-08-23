@@ -394,8 +394,9 @@ font-size: 160%;
   <strong > قداش قدرة المحطة الشمسية إلي تحب تركبها؟</strong>
   <div class="row">
     <div class="column" >
-      <input type="number" id="newPower" placeholder="بالكيلواط">
+      <input type="number" id="newPower"  placeholder="بالكيلواط">
       <mark style="display: none;" id="highPowerMes"> قدرة المحطة أكثر من اللازم </mark>
+      <mark style="display: none;" id="lowPowerMes"> قدرة المحطة ضعيفة </mark>
     </div>
   </div>
 </div>
@@ -901,6 +902,14 @@ $("#newPower").change(function(){
   }else{
     $( ".next" ).css( "display", "block" );
     $( "#highPowerMes" ).css( "display", "none" );
+  }
+
+  if($("#newPower").val()<0.5){
+    $( ".next" ).css( "display", "none" );
+    $( "#lowPowerMes" ).css( "display", "block" );
+  }else{
+    $( ".next" ).css( "display", "block" );
+    $( "#lowPowerMes" ).css( "display", "none" );
   }
   newinvoice=0;
 
