@@ -370,6 +370,7 @@ font-size: 160%;
         <option value="mannouba">منوبة</option>
         <option value="nabeul">نابل</option>
       </select>
+      <mark style="display: none;" id="lowPowerMes1"> قدرة المحطة ضعيفة </mark>
     </div>
     <!--div class="column" >
       
@@ -550,13 +551,13 @@ function showSlides(n) {
 function deletefacture (){
 
   $( "#facture" ).val("");
-
+  
 } 
 
 function deletekwh (){
   $( "#kwh" ).val("");
 
-
+  
 }
 /****code de conversion montant de facture à puissance PV******/
 
@@ -601,6 +602,14 @@ $("input").change(function(){
   }
 
   prodFunction();
+
+  if(puiPV<0.5){
+   
+    $( "#lowPowerMes1" ).css( "display", "block" );
+  }else{
+    
+    $( "#lowPowerMes1" ).css( "display", "none" );
+  }
 
 });
 
@@ -751,7 +760,13 @@ $("#gouvernorat").change(function(){
 
   prodFunction();
   creditFunction();
-  
+  if(puiPV<0.5){
+    $( ".next" ).css( "display", "none" );
+    $( "#lowPowerMes1" ).css( "display", "block" );
+  }else{
+    $( ".next" ).css( "display", "block" );
+    $( "#lowPowerMes1" ).css( "display", "none" );
+  }
 });
 
 /**************************************/
