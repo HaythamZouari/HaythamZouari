@@ -604,9 +604,9 @@ $("input").change(function(){
 });
 
 //limites des puissances pour la définition des prix du kWc
-limP=[2,3,4,5];
+limP=[1,1.5,2.5,4,5];
 //limites des prix  selon les puissances
-limC=[4000,4500,4500,4000,3200];
+limC=[5000,3800,3450,3200,3000];
 //puissance limite pour la subvention faible conso
 limPLowSub=1.5;
 //subvention pour la subvention faible conso
@@ -624,15 +624,18 @@ var cashflowCum2=[];
 function investCalc(puiPV){
 
   if (puiPV<limP[0]){
-    invest=puiPV*limC[0];
+    invest=(puiPV*limCLowSub)+3500;
     
   }else if (limP[0]<=puiPV && puiPV<limP[1]){
-    invest=puiPV*limC[1];
+    invest=puiPV*limC[0];
     
   }else if (limP[1]<=puiPV && puiPV<limP[2]){
-    invest=puiPV*limC[2];
+    invest=puiPV*limC[1];
     
   }else if (limP[2]<=puiPV && puiPV<limP[3]){
+    invest=puiPV*limC[2];
+    
+  }else if (limP[3]<=puiPV && puiPV<limP[4]){
     invest=puiPV*limC[3];
     
   }else {
@@ -732,7 +735,7 @@ function prodFunction() {
   invoice=invoiceCalc(Energie);
   pp=ppCalc(invest,subvention,invoice);
 
-  $('#invest').html(Math.round(invest/100)*100);  
+  $('#invest').html(Math.round(invest/10)*10);  
   $('#subvention').html(Math.round(subvention/10)*10);  
   $('#pp').html(Math.round(pp*1)/1);  
 
@@ -857,13 +860,13 @@ function credit2Function() {
 $("#credit").change(function(){
 for(let i = 0; i < 4; i++){
   if($("#credit").val()==montantCredit[i]){
-    $('#annuite').html(Math.round(annuite[i]/100)*100);  
+    $('#annuite').html(Math.round(annuite[i]/10)*10);  
     annuiteDef=annuite[i];
   }
 }
 console.log($("#credit").val());
 ppCredit=ppCreditCalc(invest,subvention,invoice,($("#credit").val()),annuiteDef);
-$('#fPropre').html(Math.round((invest-subvention-($("#credit").val()))/100)*100);
+$('#fPropre').html(Math.round((invest-subvention-($("#credit").val()))/1)*1);
 $('#creditVal').html($("#credit").val());
 $('#invest1').html(Math.round(invest*1)/1);  
   $('#subvention1').html(Math.round(subvention*1)/1);  
@@ -875,7 +878,7 @@ $("#credit2").change(function(){
   
   for(let i = 0; i < 4; i++){
     if($("#credit2").val()==montantCredit[i]){
-      $('#annuite2').html(Math.round(annuite[i]/100)*100);  
+      $('#annuite2').html(Math.round(annuite[i]/10)*10);  
       annuiteDef2=annuite[i];
     }
   }
@@ -883,7 +886,7 @@ $("#credit2").change(function(){
   ppCredit2=ppCreditCalc(newInvest,newSubvention,factureEvit,($("#credit2").val()),annuiteDef2);
   $('#fPropre2').html(Math.round((newInvest-newSubvention-($("#credit2").val()))*1)/1);
   $('#creditVal2').html($("#credit2").val());
-  $('#invest1').html(Math.round(invest/100)*100);  
+  $('#invest1').html(Math.round(invest/10)*10);  
     $('#subvention1').html(Math.round(subvention/10)*10);  
     $('#ppcredit2').html(Math.round(ppCredit2*1)/1);  
 });
@@ -921,7 +924,7 @@ $("#newPower").change(function(){
   $('#pourcentage').html(Math.round((factureEvit/invoice)*100));
 
     
-  $('#newInvest').html(Math.round(newInvest/100)*100);  
+  $('#newInvest').html(Math.round(newInvest/10)*10);  
     
   
   $('#newSubvention').html(Math.round(newSubvention/10)*10);  
