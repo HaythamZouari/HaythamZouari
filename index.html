@@ -2,6 +2,8 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" rel="stylesheet"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
@@ -54,7 +56,7 @@
   position: absolute;
    width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("IPV.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("IPV1 (2).jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -104,7 +106,10 @@ strong  {text-align: center;
   color: white;
   font-size:xx-large;
   }
-
+a {
+  color: white;
+  
+  }
  
 
 ::placeholder {
@@ -194,8 +199,9 @@ label {
 
 #myImg {
   border-radius: 5px;
-  cursor: pointer;
+  cursor:zoom-in ;
   transition: 0.3s;
+  
 }
 
 #myImg:hover {opacity: 0.7;}
@@ -278,6 +284,7 @@ font-size: 160%;
 }
 
 
+
 /***************modal end***********/
 
 </style>
@@ -289,12 +296,14 @@ font-size: 160%;
 <div class="mySlides">
 
   <strong><h2>مرحبا بيك </h2><br />
-    من خلال البرنامج هذا تنجم تعرف بصفة تقريبية قداش يتكلفلك تركيب محطة شمسية منتجة للكهرباء للإستهلاك المنزلي وقداش ينجم يربحك. 
-باش تعرف أكثر جاوب على الأسئلة  <h6>"معلومات ارشادية والنتائج محسوبة على أساس معدلات "</h6> </strong> 
+    من خلال البرنامج هذا تنجم تعرف بصفة تقريبية قداش يتكلفلك تركيب محطة شمسية منتجة للكهرباء وقداش ينجم يربحك. 
+باش تعرف أكثر جاوب على الأسئلة  <h6>" معلومات ارشادية والنتائج محسوبة على أساس معدلات وتعريفات جوان 2019"</h6> 
+<input type="button" onclick="Residentiel()" style="margin-top: 20%;" value="إستهلاك منزلي">
+   <input type="button" onclick="nonResidentiel()" style="margin-top: 3%;" value="إستهلاك غير المنزلي"></strong> 
 </div>
 
 <div class="mySlides">
-  <strong > قداش تستهلك ضو في العام بالدينار أو بالكيلواط ساعة</strong></br>
+  <strong > قداش تستهلك ضو في العام بالدينار أو بالكيلواط ساعة <h6>"إنزل على التصويرة أو الفيديو كان تحب تعرف كيفاش تقرا الفاتورة "</h6></strong></br>
   <div class="row"></br></br>
     <div class="column" >
       <input type="number" id="facture" onclick="deletekwh()"  placeholder="بالدينار">
@@ -303,17 +312,18 @@ font-size: 160%;
       <input type="number" id="kwh"  onclick="deletefacture()" placeholder="بالكيلواط ساعة"> 
     </div>
   </div>
-  
-  <img id="myImg" src="FACTURE highlight consommation1.jpg"  style="width:10%">
-  <q style="color: white;">هذا نموذج الفاتورة</q>
+  <div>
+    <img id="myImg" src="FACTURE highlight consommation1.jpg"  style="width:10%" >
+    
   <!-- The Modal -->
   <div id="myModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="img01">
     
   </div>
-  <div style="right:100% ">
-  <iframe width="150" height="100"  src="https://www.youtube.com/embed/wTkoLfnBRrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div>
+  <iframe width="13%" height="100"  src="https://www.youtube.com/embed/wTkoLfnBRrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 </div>
 </div>
 
@@ -386,8 +396,9 @@ font-size: 160%;
     تتكلف <u id="invest"></u> دينار
    تاخذ عليهم دعم <u id="subvention"></u> دينار
    وترجع فلوسك مبعد <u id="pp"></u>  سنين
-   <input type="button" onclick="creditSlides()" style="margin-top: 20%;" value="تحب تمول مشروع المحطة بقرض؟">
+   <input type="button" id="creditButton1" onclick="creditSlides()" style="margin-top: 20%;" value="تحب تمول مشروع المحطة بقرض؟">
    <input type="button" onclick="plusSlides(1)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟">
+   <input type="button" onclick="plusSlides(+5)" style="margin-top: 3%;" value="لمزيد من المعلومات">
   </strong> 
 </div>
 
@@ -408,24 +419,14 @@ font-size: 160%;
    تاخذ عليهم دعم <u id="newSubvention"></u> دينار
    ماش تربح <u id="pourcentage"></u>% على الفاتورة في العام
    وترجع فلوسك مبعد <u id="newpp"></u>  سنين
-   <input type="button" onclick="plusSlides(+3)" style="margin-top: 20%;" value="تحب تمول مشروع المحطة بقرض؟">
-   <input type="button" onclick="plusSlides(-5)" style="margin-top: 3%;" value="تحب تعاود؟">
+   <input type="button" id="creditButton2" onclick="creditSlides2()" style="margin-top: 20%;" value="تحب تمول مشروع المحطة بقرض؟">
+   <input type="button" onclick="reload()" style="margin-top: 3%;" value="تحب تعاود؟">
+   <input type="button" onclick="plusSlides(+3)" style="margin-top: 3%;" value="لمزيد من المعلومات">
   </strong> 
 </div>
 
 
-<div class="mySlides">
-  <strong>قداش قيمة القرض؟ <h6>"قرض يخلص مع فاتورة الضو "</h6></strong>
-  <div class="row">
-    <div class="column" >  
-      <select name="credit" id="credit">
-        
-        
-        
-      </select>
-    </div>
-  </div>
-</div>
+
 
 <div class="mySlides">
   <strong>في حالة تمويل المحطة بقرض قيمتو<u id="creditVal"></u>دينار
@@ -434,23 +435,13 @@ font-size: 160%;
     على <u>7</u> سنين
    وترجع فلوسك مبعد <u id="ppcredit"></u>  سنين
    
-   <input type="button" onclick="plusSlides(-3)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟">
-   <input type="button" onclick="plusSlides(-7)" style="margin-top: 3%;" value="تحب تعاود؟">
+   <input type="button" onclick="plusSlides(-2)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟">
+   <input type="button" onclick="reload()" style="margin-top: 3%;" value="تحب تعاود؟">
+   <input type="button" onclick="plusSlides(+2)" style="margin-top: 3%;" value="لمزيد من المعلومات">
   </strong> 
 </div>
 
-<div class="mySlides">
-  <strong>قداش قيمة القرض؟ </strong>
-  <div class="row">
-    <div class="column" >  
-      <select name="credit2" id="credit2">
-       
-        <option > 3500 </option>
-        
-      </select>
-    </div>
-  </div>
-</div>
+
 
 <div class="mySlides">
   <strong>في حالة تمويل المحطة بقرض قيمتو<u id="creditVal2"></u>دينار
@@ -458,8 +449,21 @@ font-size: 160%;
     تخلص<u id="annuite2"></u>دينار في العام 
     على <u>7</u> سنين
    وترجع فلوسك مبعد <u id="ppcredit2"></u>  سنين
-   <input type="button" onclick="plusSlides(-9)" style="margin-top: 20%;" value="تحب تعاود؟">
+   <input type="button" onclick="reload()" style="margin-top: 20%;" value="تحب تعاود؟">
+   
   </strong> 
+</div>
+
+<div class="mySlides">
+  
+  <strong><ul>
+    <li> <a href="http://www.anme.tn/?q=fr" target="_blank">موقع الوكالة الوطنية للتحكم في الطاقة</a></li>
+      <li><a href="https://www.steg.com.tn/" target="_blank">موقع الشركة التونسية للكهرباء والغاز</a></li>
+        <li> <a href="https://www.steg.com.tn/dwl/Societe_eligibles_prosol_elec.pdf" target="_blank">قائمة شركات تركيب محطات الطاقة الشمسية</a></li>
+          <li><a href="https://www.steg.com.tn/fr/prosol_elec/Demandes_Formulaires.html" target="_blank">وثائق مهمة</a></li>
+            <li> <a href="https://energypedia.info/images/5/50/PROFITPV_Tunisie_BT_avril2021.xlsm" target="_blank">تطبيقة "اكسل" لدراسة مردودية المحطات الشمسية </a></li>
+  </ul>
+  <input type="button" onclick="location.href='http://www.anme.tn/?q=fr';" style="margin-top: 3%;" value="إغلاق"></strong> 
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">❮قبل</a>
@@ -479,8 +483,53 @@ var annuite=[682.506,1267.512,1462.512,1950.012]
 var montantCredit=[3500,6500,7500,10000]
 var limPcredit=[2,3,4]
 var prodChoisi = 0;
+var creditPPui=0;
+var annuiteDef=0;
+
+// redevance de puissance par kW
+const redP=0.7;
+//prix du kWh par tranches
+tranchesP=[0.176,0.218,0.341,0.414];
+//limites des la consommation par tranches
+const tranchesL=[200,100,200];
 
 
+//limites des puissances pour la définition des prix du kWc
+limP=[1,1.5,2.5,4,5];
+//limites des prix  selon les puissances
+limC=[5000,3800,3450,3200,3000];
+//puissance limite pour la subvention faible conso
+limPLowSub=1.5;
+//subvention pour la subvention faible conso
+limCLowSub=1500;
+// subention par kWc pour les autres tranches
+subkWc=500;
+//plafond sub
+ plafondsub=3000;
+//augemntation tarif steg
+augTarif=0.05;
+
+
+function nonResidentiel(){
+  plusSlides(1);
+  plafondsub=5000;
+  tranchesP=[0.195,0.240,0.333,0.391];
+  $( "#creditButton1" ).css( "display", "none" );
+  $( "#creditButton2" ).css( "display", "none" );
+}
+
+function Residentiel(){
+  plusSlides(1);
+  plafondsub=3000;
+  tranchesP=[0.176,0.218,0.341,0.414];
+  $( "#creditButton1" ).css( "display", "block" );
+  $( "#creditButton2" ).css( "display", "block" );
+}
+
+
+function reload(){
+  location.reload();
+}
 /*function gouvFunction(sel) {
   console.log(sel.options[sel.selectedIndex].text);
   $("#municipalité").empty()
@@ -511,6 +560,14 @@ function plusSlides(n) {
 function creditSlides() {
   showSlides(slideIndex += 3);
   $( ".prev" ).css( "display", "none" );
+  creditFunction();
+  ppCredit=ppCreditCalc(invest,subvention,invoice,creditPPui,annuiteDef);
+  $('#fPropre').html(Math.round((invest-subvention-creditPPui)/1)*1);
+  $('#creditVal').html(creditPPui);
+  $('#invest1').html(Math.round(invest*1)/1);  
+  $('#subvention1').html(Math.round(subvention*1)/1);  
+  $('#ppcredit').html(Math.round(ppCredit*1)/1);  
+  $('#annuite').html(Math.round(annuiteDef*1)/1);  
 }
 
 function newPowerSlides() {
@@ -534,12 +591,12 @@ function showSlides(n) {
   }
   
   slides[slideIndex-1].style.display = "block";  
-  if (slideIndex==1 || slideIndex==7 ){
+  if (slideIndex==1 || slideIndex==6 ){
     $( ".prev" ).css( "display", "none" );
   }else{
     $( ".prev" ).css( "display", "block" );
   }
-  if (slideIndex==4 || slideIndex==6 || slideIndex==8 || slideIndex==10){
+  if (slideIndex==4 || slideIndex==6 || slideIndex==7 || slideIndex==8 || slideIndex==1 || slideIndex==9){
     $( ".next" ).css( "display", "none" );
   }else{
     $( ".next" ).css( "display", "block" );
@@ -563,12 +620,6 @@ function deletekwh (){
 
 
 
-// redevance de puissance par kW
-const redP=0.7;
-//prix du kWh par tranches
-const tranchesP=[0.176,0.218,0.341,0.414];
-//limites des la consommation par tranches
-const tranchesL=[200,100,200];
 
 
 $("input").change(function(){
@@ -576,7 +627,8 @@ $("input").change(function(){
   const puissance = 0;
   //facture sans redevance de puissance
   var factSRed=facture-(puissance*redP*12);
-
+  console.log(tranchesP);
+  console.log(plafondsub);
   Energie=0;
 
   if ( factSRed < tranchesP[0]*tranchesL[0]*12) {
@@ -613,20 +665,7 @@ $("input").change(function(){
 
 });
 
-//limites des puissances pour la définition des prix du kWc
-limP=[1,1.5,2.5,4,5];
-//limites des prix  selon les puissances
-limC=[5000,3800,3450,3200,3000];
-//puissance limite pour la subvention faible conso
-limPLowSub=1.5;
-//subvention pour la subvention faible conso
-limCLowSub=1500;
-// subention par kWc pour les autres tranches
-subkWc=500;
-//plafond sub
-plafondsub=3000;
-//augemntation tarif steg
-augTarif=0.05;
+
 
 var cashflowCum1=[];
 var cashflowCum2=[];
@@ -664,7 +703,7 @@ function subvCalc(puiPV){
   }
 
   if (subvention>plafondsub){
-    subvention=3000;
+    subvention=plafondsub;
   }
   return subvention;
 }
@@ -750,7 +789,7 @@ function prodFunction() {
   $('#pp').html(Math.round(pp*1)/1);  
 
   console.log(Energie);
-
+  console.log(invoice);
 
 }
 
@@ -760,112 +799,66 @@ $("#gouvernorat").change(function(){
 
   prodFunction();
   creditFunction();
-  if(puiPV<0.5){
-    $( ".next" ).css( "display", "none" );
-    $( "#lowPowerMes1" ).css( "display", "block" );
-  }else{
-    $( ".next" ).css( "display", "block" );
-    $( "#lowPowerMes1" ).css( "display", "none" );
-  }
+  
 });
 
 /**************************************/
 
 function creditFunction() {
   
-  $("#credit").empty()
-  
-  $('#credit').append($('<option hidden disabled selected value>', 
-   'بالدينار'
-      ));
-    if ( puiPV<2){
-      $('#credit').append($('<option>', {    
-        text: montantCredit[0]
-      }));
-      
-    }
+  if ( puiPV<2){
+        creditPPui= montantCredit[0];
+        annuiteDef=annuite[0];
+      }
+
 
     if ( puiPV>=2&puiPV<3){
-      $('#credit').append($('<option>', {    
-        text: montantCredit[0]
-      }));
-      $('#credit').append($('<option>', {   
-        text: montantCredit[1]
-      }));
+      
+        
+        creditPPui= montantCredit[1]
+        annuiteDef=annuite[1];
+      
     }
     if ( puiPV>=3&puiPV<4){ 
-      $('#credit').append($('<option>', {  
-        text: montantCredit[0]
-      }));
-      $('#credit').append($('<option>', {  
-        text: montantCredit[1]
-      }));
-      $('#credit').append($('<option>', {  
-        text: montantCredit[2]
-      }));
+       
+       
+        creditPPui= montantCredit[2]
+        annuiteDef=annuite[2];
+      
     }
     if ( puiPV>=4){ 
-      $('#credit').append($('<option>', {   
-        text: montantCredit[0]
-      }));
-      $('#credit').append($('<option>', { 
-        text: montantCredit[1]
-      }));
-      $('#credit').append($('<option>', {   
-        text: montantCredit[2]
-      }));
-      $('#credit').append($('<option>', {    
-        text: montantCredit[3]
-      }));
+         
+        creditPPui= montantCredit[3]
+        annuiteDef=annuite[3];
+     
     }
 }
 
 function credit2Function() {
   
-  $("#credit2").empty()
-  $('#credit2').append($('<option hidden disabled selected value>', 
-   'بالدينار'
-      ));
+  
     if ( newPuiPV<2){
-        $('#credit2').append($('<option>', {    
-          text: montantCredit[0]
-        }));
-        
+        creditPPui2= montantCredit[0];
+        annuiteDef2=annuite[0];
       }
 
 
     if ( newPuiPV>=2&newPuiPV<3){
-      $('#credit2').append($('<option>', {    
-        text: montantCredit[0]
-      }));
-      $('#credit2').append($('<option>', {   
-        text: montantCredit[1]
-      }));
+      
+        
+        creditPPui2= montantCredit[1]
+        annuiteDef2=annuite[1];
     }
     if ( newPuiPV>=3&newPuiPV<4){ 
-      $('#credit2').append($('<option>', {  
-        text: montantCredit[0]
-      }));
-      $('#credit2').append($('<option>', {  
-        text: montantCredit[1]
-      }));
-      $('#credit2').append($('<option>', {  
-        text: montantCredit[2]
-      }));
+       
+       
+        creditPPui2= montantCredit[2]
+        annuiteDef2=annuite[2];
     }
     if ( newPuiPV>=4){ 
-      $('#credit2').append($('<option>', {   
-        text: montantCredit[0]
-      }));
-      $('#credit2').append($('<option>', { 
-        text: montantCredit[1]
-      }));
-      $('#credit2').append($('<option>', {   
-        text: montantCredit[2]
-      }));
-      $('#credit2').append($('<option>', {    
-        text: montantCredit[3]
-      }));
+         
+        creditPPui2= montantCredit[3]
+        annuiteDef2=annuite[3];
     }
 }
 
@@ -873,45 +866,28 @@ function credit2Function() {
 
 
 
-$("#credit").change(function(){
-for(let i = 0; i < 4; i++){
-  if($("#credit").val()==montantCredit[i]){
-    $('#annuite').html(Math.round(annuite[i]/10)*10);  
-    annuiteDef=annuite[i];
-  }
-}
-console.log($("#credit").val());
-ppCredit=ppCreditCalc(invest,subvention,invoice,($("#credit").val()),annuiteDef);
-$('#fPropre').html(Math.round((invest-subvention-($("#credit").val()))/1)*1);
-$('#creditVal').html($("#credit").val());
-$('#invest1').html(Math.round(invest*1)/1);  
-  $('#subvention1').html(Math.round(subvention*1)/1);  
-  $('#ppcredit').html(Math.round(ppCredit*1)/1);  
-});
 
 
-$("#credit2").change(function(){
+
+function creditSlides2(){
+  showSlides(slideIndex += 2);
+  credit2Function();
   
-  for(let i = 0; i < 4; i++){
-    if($("#credit2").val()==montantCredit[i]){
-      $('#annuite2').html(Math.round(annuite[i]/10)*10);  
-      annuiteDef2=annuite[i];
-    }
-  }
-  console.log($("#credit").val());
-  ppCredit2=ppCreditCalc(newInvest,newSubvention,factureEvit,($("#credit2").val()),annuiteDef2);
-  $('#fPropre2').html(Math.round((newInvest-newSubvention-($("#credit2").val()))*1)/1);
-  $('#creditVal2').html($("#credit2").val());
+  ppCredit2=ppCreditCalc(newInvest,newSubvention,factureEvit,creditPPui2,annuiteDef2);
+  $('#fPropre2').html(Math.round((newInvest-newSubvention-creditPPui2)*1)/1);
+  $('#creditVal2').html(creditPPui2);
   $('#invest1').html(Math.round(invest/10)*10);  
     $('#subvention1').html(Math.round(subvention/10)*10);  
-    $('#ppcredit2').html(Math.round(ppCredit2*1)/1);  
-});
+    $('#ppcredit2').html(Math.round(ppCredit2*1)/1); 
+    $('#annuite2').html(Math.round(annuiteDef2*1)/1);  
+};
 
 /***************newpower**************/
 
 $("#newPower").change(function(){
 
-  if($("#newPower").val()>puiPV){
+$( ".next" ).css( "display", "none" );
+  if($("#newPower").val()>puiPV) {
     $( ".next" ).css( "display", "none" );
     $( "#highPowerMes" ).css( "display", "block" );
   }else{
@@ -919,13 +895,7 @@ $("#newPower").change(function(){
     $( "#highPowerMes" ).css( "display", "none" );
   }
 
-  if($("#newPower").val()<0.5){
-    $( ".next" ).css( "display", "none" );
-    $( "#lowPowerMes" ).css( "display", "block" );
-  }else{
-    $( ".next" ).css( "display", "block" );
-    $( "#lowPowerMes" ).css( "display", "none" );
-  }
+  
   newinvoice=0;
 
   newPuiPV=$("#newPower").val();
