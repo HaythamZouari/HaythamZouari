@@ -397,12 +397,12 @@ font-size: 160%;
    تاخذ عليهم دعم <u id="subvention"></u> دينار
    وترجع فلوسك مبعد <u id="pp"></u>  سنين
    <input type="button" id="creditButton1" onclick="creditSlides()" style="margin-top: 20%;" value="تحب تمول مشروع المحطة بقرض؟">
-   <input type="button" onclick="plusSlides(1)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟">
-   <input type="button" onclick="plusSlides(+5)" style="margin-top: 3%;" value="لمزيد من المعلومات">
+   <!--input type="button" onclick="plusSlides(1)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟"-->
+   <input type="button" onclick="plusSlides(+3)" style="margin-top: 3%;" value="لمزيد من المعلومات">
   </strong> 
 </div>
 
-<div class="mySlides">
+<!--div class="mySlides">
   <strong > قداش قدرة المحطة الشمسية إلي تحب تركبها؟</strong>
   <div class="row">
     <div class="column" >
@@ -423,7 +423,7 @@ font-size: 160%;
    <input type="button" onclick="reload()" style="margin-top: 3%;" value="تحب تعاود؟">
    <input type="button" onclick="plusSlides(+3)" style="margin-top: 3%;" value="لمزيد من المعلومات">
   </strong> 
-</div>
+</div-->
 
 
 
@@ -435,7 +435,7 @@ font-size: 160%;
     على <u>7</u> سنين
    وترجع فلوسك مبعد <u id="ppcredit"></u>  سنين
    
-   <input type="button" onclick="plusSlides(-2)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟">
+   <!--input type="button" onclick="plusSlides(-2)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟"-->
    <input type="button" onclick="reload()" style="margin-top: 3%;" value="تحب تعاود؟">
    <input type="button" onclick="plusSlides(+2)" style="margin-top: 3%;" value="لمزيد من المعلومات">
   </strong> 
@@ -459,7 +459,7 @@ font-size: 160%;
   <strong><ul>
     <li> <a href="http://www.anme.tn/?q=fr" target="_blank">موقع الوكالة الوطنية للتحكم في الطاقة</a></li>
       <li><a href="https://www.steg.com.tn/" target="_blank">موقع الشركة التونسية للكهرباء والغاز</a></li>
-        <li> <a href="https://www.steg.com.tn/dwl/Societe_eligibles_prosol_elec.pdf" target="_blank">قائمة شركات تركيب محطات الطاقة الشمسية</a></li>
+        <li> <a href="http://www.anme.tn/sites/default/files/liste_societes_eligibles_01-04-2021.pdf" target="_blank">قائمة شركات تركيب محطات الطاقة الشمسية</a></li>
           <li><a href="https://www.steg.com.tn/fr/prosol_elec/Demandes_Formulaires.html" target="_blank">وثائق مهمة</a></li>
             <li> <a href="https://energypedia.info/images/5/50/PROFITPV_Tunisie_BT_avril2021.xlsm" target="_blank">تطبيقة "اكسل" لدراسة مردودية المحطات الشمسية </a></li>
   </ul>
@@ -558,7 +558,7 @@ function plusSlides(n) {
 }
 
 function creditSlides() {
-  showSlides(slideIndex += 3);
+  showSlides(slideIndex += 1);
   $( ".prev" ).css( "display", "none" );
   creditFunction();
   ppCredit=ppCreditCalc(invest,subvention,invoice,creditPPui,annuiteDef);
@@ -591,12 +591,12 @@ function showSlides(n) {
   }
   
   slides[slideIndex-1].style.display = "block";  
-  if (slideIndex==1 || slideIndex==6 ){
+  if (slideIndex==1 || slideIndex==6 || slideIndex==7){
     $( ".prev" ).css( "display", "none" );
   }else{
     $( ".prev" ).css( "display", "block" );
   }
-  if (slideIndex==4 || slideIndex==6 || slideIndex==7 || slideIndex==8 || slideIndex==1 || slideIndex==9){
+  if (slideIndex==4 || slideIndex==5 || slideIndex==6 || slideIndex==7 || slideIndex==8 || slideIndex==1 || slideIndex==9){
     $( ".next" ).css( "display", "none" );
   }else{
     $( ".next" ).css( "display", "block" );
@@ -652,7 +652,8 @@ $("input").change(function(){
   if($("#kwh").val() !== null && $("#kwh").val() !== '') {
     Energie=$("#kwh").val();
   }
-
+  console.log("Energie");
+console.log(Energie);
   prodFunction();
 
   if(puiPV<0.5){
