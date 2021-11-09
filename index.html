@@ -118,8 +118,7 @@ a {
   text-align: center;
 }
 
-input[type=number] {
-  
+input[type=number] { 
   width: 35%;
   padding: 15px;
   border: 1px solid #ccc;
@@ -129,21 +128,12 @@ input[type=number] {
   font-size:xx-large;
   color: white;
   text-align-last: center;
-  
-  
 }
 
-
-
-
-input[type=button] {
-  
-  
+input[type=button] { 
   width: 100%;
-  
   border: 1px solid #ccc;
-  border-radius: 4px;
-  
+  border-radius: 4px; 
   background-color: #ffffff1e;
   font-size:xx-large;
   color: white; 
@@ -152,7 +142,6 @@ input[type=button] {
 }
 
 input[type=button]:hover {background-color: #e7e7e74f;}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -165,25 +154,22 @@ input[type=number] {
 }
 
 select { 
-  
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #ffffff00;
   font-size:xx-large;
   color: #ffffff;
-  
 }
 
 select option {
   background-color: #030303;
 }
+
 label {
-  
   background-color: #ffffff00;
   font-size:xx-large;
   color: white;
   float: right;
-  
 }
 
 @media screen and (max-width: 600px) {
@@ -201,7 +187,6 @@ label {
   border-radius: 5px;
   cursor:zoom-in ;
   transition: 0.3s;
-  
 }
 
 #myImg:hover {opacity: 0.7;}
@@ -213,7 +198,6 @@ label {
 }
 
 #myImg2:hover {opacity: 0.7;}
-
 
 /* The Modal (background) */
 .modal {
@@ -237,9 +221,6 @@ label {
   width: 80%;
   max-width: 700px;
 }
-
-
-
 
 /* Add Animation */
 .modal-content {  
@@ -279,11 +260,8 @@ label {
 }
 
 u {
-
 font-size: 160%;
 }
-
-
 
 /***************modal end***********/
 
@@ -311,7 +289,11 @@ font-size: 160%;
     <div class="column" >
       <input type="number" id="kwh"  onclick="deletefacture()" placeholder="بالكيلواط ساعة"> 
     </div>
+    <div class="column" >
+    <mark style="display: none;" id="lowPowerMes2"> الاستهلاك غير كافي </mark>
   </div>
+  </div>
+ 
   <div>
     <img id="myImg" src="FACTURE highlight consommation1.jpg"  style="width:10%" >
     
@@ -325,6 +307,7 @@ font-size: 160%;
   <iframe width="160" height="100"  src="https://www.youtube.com/embed/wTkoLfnBRrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </div>
+
 </div>
 
 <!--div class="mySlides">
@@ -434,7 +417,6 @@ font-size: 160%;
     تخلص<u id="annuite"></u>دينار في العام 
     على <u>7</u> سنين
    وترجع فلوسك مبعد <u id="ppcredit"></u>  سنين
-   
    <!--input type="button" onclick="plusSlides(-2)" style="margin-top: 3%;" value="تحب تركب محطة بقدرة أقل؟"-->
    <input type="button" onclick="reload()" style="margin-top: 3%;" value="تحب تعاود؟">
    <input type="button" onclick="plusSlides(+2)" style="margin-top: 3%;" value="لمزيد من المعلومات">
@@ -450,7 +432,6 @@ font-size: 160%;
     على <u>7</u> سنين
    وترجع فلوسك مبعد <u id="ppcredit2"></u>  سنين
    <input type="button" onclick="reload()" style="margin-top: 20%;" value="تحب تعاود؟">
-   
   </strong> 
 </div>
 
@@ -573,7 +554,6 @@ function creditSlides() {
 function newPowerSlides() {
   showSlides(slideIndex -= 3);
   console.log(slideIndex);
-  
 }
 
 function currentSlide(n) {
@@ -600,28 +580,53 @@ function showSlides(n) {
     $( ".next" ).css( "display", "none" );
   }else{
     $( ".next" ).css( "display", "block" );
-  }
-  
+  }  
 }
 
 /*********************/
 function deletefacture (){
-
-  $( "#facture" ).val("");
-  
+  $( "#facture" ).val("");  
 } 
 
 function deletekwh (){
-  $( "#kwh" ).val("");
-
-  
+  $( "#kwh" ).val("");  
 }
 /****code de conversion montant de facture à puissance PV******/
+/*
+var tab=[];
+var factSRed = 0;
+var i=0;
+for (var factSRed = 400; factSRed <= 5000; factSRed += 10){
+  const puissance = 0;
+  //facture sans redevance de puissance
+  
+  
+  Energie=0;
 
+  if ( factSRed < tranchesP[0]*tranchesL[0]*12) {
 
+    Energie=factSRed/tranchesP[0];
 
+  }else if(factSRed < ((tranchesP[0]*tranchesL[0]*12)+(tranchesP[1]*tranchesL[1]*12))) {
 
+    Energie= 12*tranchesL[0] + ((factSRed- (tranchesP[0]*tranchesL[0]*12))/(tranchesP[1]));
 
+  }else if(factSRed < ((tranchesP[0]*tranchesL[0]*12)+(tranchesP[1]*tranchesL[1]*12)+(tranchesP[2]*tranchesL[2]*12))) {
+
+    Energie= 12*(tranchesL[0]+tranchesL[1]) + ((factSRed- (tranchesP[0]*tranchesL[0]*12)-(tranchesP[1]*tranchesL[1]*12))/(tranchesP[2]));
+
+  }else{
+
+    Energie= 12*(tranchesL[0]+tranchesL[1]+tranchesL[2]) + ((factSRed- (tranchesP[0]*tranchesL[0]*12)-(tranchesP[1]*tranchesL[1]*12)-(tranchesP[2]*tranchesL[2]*12))/(tranchesP[3]));
+
+  }
+  tab[i]=[factSRed,Energie]
+  i++;
+}
+console.log("tab");
+console.log(tab);
+
+*/
 $("input").change(function(){
   var facture = $('#facture').val();
   const puissance = 0;
@@ -653,7 +658,7 @@ $("input").change(function(){
     Energie=$("#kwh").val();
   }
   console.log("Energie");
-console.log(Energie);
+  console.log(Energie);
   prodFunction();
 
   if(puiPV<0.5){
@@ -662,6 +667,15 @@ console.log(Energie);
   }else{
     
     $( "#lowPowerMes1" ).css( "display", "none" );
+  }
+  if(Energie<1800){
+  
+    $( "#lowPowerMes2" ).css( "display", "block" );
+    $( ".next" ).css( "display", "none" );
+  }else{
+    
+    $( "#lowPowerMes2" ).css( "display", "none" );
+    $( ".next" ).css( "display", "block" );
   }
 
 });
@@ -821,17 +835,12 @@ function creditFunction() {
       
     }
     if ( puiPV>=3&puiPV<4){ 
-       
-       
         creditPPui= montantCredit[2]
         annuiteDef=annuite[2];
-      
     }
-    if ( puiPV>=4){ 
-         
+    if ( puiPV>=4){   
         creditPPui= montantCredit[3]
         annuiteDef=annuite[3];
-     
     }
 }
 
